@@ -1,0 +1,19 @@
+Mock hackathon
+
+Objective: Build a financial platform for a broad audience
+
+Idea: Finance-based web game where the user pilots a submarine that can only get to new areas by saving and investing. 
+
+Themes = Subnautica = Dark and light blue, grey, light purple, orange, and (green?)
+
+One page should be for the game while there are also pages for tracking your finances, making deposits, following financial news and information, and a part where you can add friends from your contacts. index.html is home page and has a button to play, 
+but doesn't automatically make you play
+
+Pages:
+index
+news
+tracking
+social
+
+The product would be converted to mobile eventually
+
