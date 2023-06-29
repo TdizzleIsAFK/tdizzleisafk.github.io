@@ -1,42 +1,54 @@
-let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+// Game variables
+var background = document.getElementById("gameBackground");
+var context = background.getContext("2d");
+var backgroundImage = new Image();
+var submarineImage = new Image();
+var gravity = 0.6;
+var jumpForce = 12;
+var submarine = {
+  x: 100,
+  y: background.height / 2 - 25,
+  width: 100,
+  height: 50,
+  velocity: 0
+};
 
-function addItem() {
-  const itemInput = document.getElementById('item');
-  const costInput = document.getElementById('cost');
-  const item = itemInput.value;
-  const cost = parseFloat(costInput.value);
+// Load images
+backgroundImage.src = "img/ocean.svg";
+submarineImage.src = "img/gameSub.png";
 
-  // Basic validation
-  if (item && cost) {
-    const expense = {item, cost};
-    expenses.push(expense);
-    localStorage.setItem('expenses', JSON.stringify(expenses));
-    itemInput.value = '';
-    costInput.value = '';
-    updateExpenseList();
+// Handle key presses
+document.addEventListener("keydown", function (event) {
+  if (event.code === "Space") {
+    jumpSubmarine();
   }
+});
+
+// Jump the submarine
+function jumpSubmarine() {
+  submarine.velocity = -jumpForce;
 }
 
-function updateExpenseList() {
-  const expenseList = document.getElementById('expenseList');
-  const totalElement = document.getElementById('total');
+// Update game frames
+function update() {
+  // Clear the canvas
+  context.clearRect(0, 0, background.width, background.height);
 
-  // Clear current list
-  expenseList.innerHTML = '';
+  // Draw background
+  context.drawImage(backgroundImage, 0, 0, background.width, background.height);
 
-  let total = 0;
-  for (const expense of expenses) {
-    total += expense.cost;
+  // Draw submarine
+  context.drawImage(submarineImage, submarine.x, submarine.y, submarine.width, submarine.height);
 
-    // Create list item and append to the list
-    const listItem = document.createElement('li');
-    listItem.textContent = `${expense.item}: $${expense.cost}`;
-    expenseList.appendChild(listItem);
-  }
+  // Apply gravity to the submarine
+  submarine.velocity += gravity;
+  submarine.y += submarine.velocity;
 
-  // Update total
-  totalElement.textContent = `$${total.toFixed(2)}`;
+  // Request the next frame
+  requestAnimationFrame(update);
 }
 
-// Update list when page loads
-updateExpenseList();
+// Start the game
+backgroundImage.onload = function () {
+  update();
+};
