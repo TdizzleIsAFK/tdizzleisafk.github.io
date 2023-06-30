@@ -129,7 +129,7 @@
     width: 50px; /* adjusted to half of the original size */
     position: absolute;
     top: 80%;
-    left: 0%;
+    left: 100%;
     transform: translate(-50%, -50%);
     animation: shoalMove 26s linear infinite;
 }
@@ -161,4 +161,22 @@
         left: 100%;
         top: 90%;
     }
+}
+
+#companyInfo {
+    background-color: #E2CDB6; /* Sandy ocean floor color for main background */
+    color: #002147; /* Dark blue for contrast text color */
+    padding: 50px; /* Adjust as needed */
+}
+
+#companyInfo h1 {
+    color: #FF4500; /* Sunset orange color for headings */
+}
+
+#companyInfo p {
+    color: #4A90E2; /* Light blue color for text */
+}
+
+.content {
+    margin-bottom: 30px; /* Space between sections */
 }
