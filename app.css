@@ -1,6 +1,9 @@
-body {
+html, body {
+    max-width: 100%;
     overflow-x: hidden;
+    position: relative;
 }
+
   
   #mainBackground {
     background: url('img/ocean.png') center center / cover no-repeat;
@@ -202,6 +205,7 @@ body {
     z-index: 1;
 }
 
+
 #scrollingSubmarine {
     position: fixed;
     bottom: 35%; /* adjust as needed */
@@ -234,6 +238,8 @@ body {
     /* When the screen size is 768px or less, show the short text and hide the long text */
     #firsth2Short {
         display: block;
+        position: relative;
+        top: 70px;        
     }
     
     #firsth2Long {
