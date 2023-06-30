@@ -1,54 +1,33 @@
-// Game variables
-var background = document.getElementById("gameBackground");
-var context = background.getContext("2d");
-var backgroundImage = new Image();
-var submarineImage = new Image();
-var gravity = 0.6;
-var jumpForce = 12;
-var submarine = {
-  x: 100,
-  y: background.height / 2 - 25,
-  width: 100,
-  height: 50,
-  velocity: 0
-};
+const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
 
-// Load images
-backgroundImage.src = "img/ocean.svg";
-submarineImage.src = "img/gameSub.png";
+    let submarineY = canvas.height / 2;
+    const gravity = 0.5;
+    let velocity = 0;
 
-// Handle key presses
-document.addEventListener("keydown", function (event) {
-  if (event.code === "Space") {
-    jumpSubmarine();
-  }
-});
+    function drawSubmarine() {
+        const submarineImg = new Image();
+        submarineImg.src = 'img/gameSub.png';
+        ctx.drawImage(submarineImg, 50, submarineY);
+    }
 
-// Jump the submarine
-function jumpSubmarine() {
-  submarine.velocity = -jumpForce;
-}
+    function gameLoop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawSubmarine();
 
-// Update game frames
-function update() {
-  // Clear the canvas
-  context.clearRect(0, 0, background.width, background.height);
+        velocity += gravity;
+        submarineY += velocity;
 
-  // Draw background
-  context.drawImage(backgroundImage, 0, 0, background.width, background.height);
+        if (submarineY > canvas.height) submarineY = canvas.height;
+        if (submarineY < 0) submarineY = 0;
 
-  // Draw submarine
-  context.drawImage(submarineImage, submarine.x, submarine.y, submarine.width, submarine.height);
+        requestAnimationFrame(gameLoop);
+    }
 
-  // Apply gravity to the submarine
-  submarine.velocity += gravity;
-  submarine.y += submarine.velocity;
+    window.addEventListener('keydown', function (event) {
+        if (event.key === ' ') {
+            velocity = -10;
+        }
+    });
 
-  // Request the next frame
-  requestAnimationFrame(update);
-}
-
-// Start the game
-backgroundImage.onload = function () {
-  update();
-};
+    gameLoop();

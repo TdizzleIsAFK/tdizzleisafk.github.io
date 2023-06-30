@@ -1,8 +1,45 @@
-.ocean-background {
-    position: fixed;
-    top: 0;
+  #mainBackground {
+    background: url('img/ocean.png') center center / cover no-repeat;
+    height: 100vh; /* Default height for xs screens */
+}
+
+#subOverlay {
+    background: url('img/gameSub.png') center center / cover no-repeat;
+    height: 50px; /* change this to the actual height of the submarine */
+    width: 100px; /* change this to the actual width of the submarine */
+    position: absolute;
+    top: 50%; /* change these values to position the submarine where you want it */
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
+    transform: translate(-50%, -50%);
+    animation: move 30s linear infinite;
+}
+
+@keyframes move {
+    0%, 49% {
+        transform: translate(-50%, -50%) scaleX(1);
+    }
+    51%, 100% {
+        transform: translate(-50%, -50%) scaleX(-1);
+    }
+    0% { 
+        left: 0;
+        top: 70%;
+    }
+    25% { 
+        left: 50%;
+        top: 60%;
+    }
+    50% { 
+        left: 100%;
+        top: 70%;
+    }
+    75% { 
+        left: 50%;
+        top: 60%;
+    }
+    100% { 
+        left: 0;
+        top: 70%;
+    }
+}
+

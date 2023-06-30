@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
     <header>
@@ -34,13 +35,13 @@
                     <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                   </li>
                   <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">Tracking</a>
+                    <a class="nav-link" href="tracking.html">Tracking</a>
                   </li>
                   <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">News</a>
+                    <a class="nav-link" href="news.html">News</a>
                   </li>
                   <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">Friends</a>
+                    <a class="nav-link" href="social.html">Friends</a>
                   </li>
                 </ul>
               </div>
@@ -270,13 +271,17 @@
                 </ul>
               </div>
             </div>
-          </nav>
-          <div class="ocean-background" id="gameBackground">
-
-            <object type="image/svg+xml" data="img/ocean.svg"></object>
-          </div>
-          
+          </nav>        
     </header>
+    <div class="image-container position-relative text-center" id="mainBackground">
+        <div id="subOverlay"></div>
+        <div class="position-absolute start-50 translate-middle" style="top: 32%;">
+            <h1 class="text-white w-100 mb-4" id="mainh1">Explore New Oceans with FinWaves</h1>
+        </div>
+        <div class="position-absolute start-50 translate-middle" style="top: 70%;">
+            <h2>AquaSavings is not just a game, it's your financial lifeline. Play our immersive submarine adventure game, strategize to earn, save and invest virtual currency, and learn how to do the same in real life. Dive in today!</h2>
+        </div>
+    </div>
     <script src="app.js"></script>
     <a href="https://www.flaticon.com/free-icons/submarine" title="submarine icons">Submarine icons created by Smashicons - Flaticon</a>
     <a href="https://www.flaticon.com/free-icons/underwater" title="underwater icons">Underwater icons created by Freepik - Flaticon</a>

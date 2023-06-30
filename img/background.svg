@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <!-- Sunset orange gradient at the top -->
+  <linearGradient id="sunsetGradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#FF7F50" />
+    <stop offset="100%" stop-color="#FF4500" />
+  </linearGradient>
+  <rect width="100%" height="70%" fill="url(#sunsetGradient)" />
+
+  <!-- Dark blue waves -->
+  <g fill="#002147">
+    <path d="M0,450 Q160,400 320,450 Q480,500 640,450 Q800,400 960,450 Q1120,500 1280,450 Q1440,400 1600,450 Q1760,500 1920,450 V1080 H0 Z" />
+    <path d="M0,500 Q160,450 320,500 Q480,550 640,500 Q800,450 960,500 Q1120,550 1280,500 Q1440,450 1600,500 Q1760,550 1920,500 V1080 H0 Z" />
+    <!-- Add more wave paths here -->
+  </g>
+
+  <!-- Light blue waves -->
+  <g fill="#4A90E2">
+    <path d="M0,550 Q160,500 320,550 Q480,600 640,550 Q800,500 960,550 Q1120,600 1280,550 Q1440,500 1600,550 Q1760,600 1920,550 V1080 H0 Z" />
+    <path d="M0,600 Q160,550 320,600 Q480,650 640,600 Q800,550 960,600 Q1120,650 1280,600 Q1440,550 1600,600 Q1760,650 1920,600 V1080 H0 Z" />
+    <!-- Add more wave paths here -->
+  </g>
+  </svg>
