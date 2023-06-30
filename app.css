@@ -222,33 +222,27 @@
     transform: translateY(-50%) rotate(-90deg);
 }
 
-@media  (max-width: 1330px) {
-    #firsth2 {
-        font-size: 1.7em;
-    }
+#firsth2Short {
+    display: none;
 }
 
-@media  (max-width: 1130px) {
-    #firsth2 {
-        font-size: 1.6em;
+@media screen and (max-width: 1330px) {
+    /* When the screen size is 768px or less, show the short text and hide the long text */
+    #firsth2Short {
+        display: block;
     }
-}
-
-@media  (max-width: 1065px) {
-    #firsth2 {
-        font-size: 1.5em;
+    
+    #firsth2Long {
+        display: none;
     }
-}
 
-@media  (max-width: 996px) {
-    #firsth2 {
-        font-size: 1.4em;
-        width: 100%;
+    /* Lower the side margins */
+    .responsive-div {
+        padding: 0 2%;
     }
-}
-
-@media  (max-width: 930px) {
-    #firsth2 {
-        font-size: 1.3em;
+    
+    /* Shift the h2 down */
+    .responsive-div h2 {
+        margin-top: 50px; /* Adjust this value as needed */
     }
 }
