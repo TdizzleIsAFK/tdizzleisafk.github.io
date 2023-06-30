@@ -173,7 +173,7 @@
 }
 
 #companyInfo > * {
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 #companyInfo h1 {
@@ -191,6 +191,8 @@
     text-align: center;
 }
 
+
+
 .content {
     margin-bottom: 30px; /* Space between sections */
     z-index: 1;
@@ -202,7 +204,7 @@
     left: 50%; /* adjust as needed */
     height: 50px; /* change this to the actual height of the submarine */
     width: 100px; /* change this to the actual width of the submarine */
-    z-index: 0;
+    z-index: 2;
     transform-origin: center;
     transition: transform 0.2s ease-out;
     background: url('img/gameSub.png') center center / cover no-repeat;
@@ -218,4 +220,35 @@
 
 #scrollingSubmarine.up {
     transform: translateY(-50%) rotate(-90deg);
+}
+
+@media  (max-width: 1330px) {
+    #firsth2 {
+        font-size: 1.7em;
+    }
+}
+
+@media  (max-width: 1130px) {
+    #firsth2 {
+        font-size: 1.6em;
+    }
+}
+
+@media  (max-width: 1065px) {
+    #firsth2 {
+        font-size: 1.5em;
+    }
+}
+
+@media  (max-width: 996px) {
+    #firsth2 {
+        font-size: 1.4em;
+        width: 100%;
+    }
+}
+
+@media  (max-width: 930px) {
+    #firsth2 {
+        font-size: 1.3em;
+    }
 }
