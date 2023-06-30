@@ -43,3 +43,42 @@
     }
 }
 
+#planeOverlay {
+    background: url('img/plane.png') center center / cover no-repeat;
+    height: 100px; /* change this to the actual height of the plane */
+    width: 100px; /* change this to the actual width of the plane */
+    position: absolute;
+    top: 20%; /* adjust these values to position the plane where you want it */
+    left: 100%;
+    transform: translate(-50%, -50%);
+    animation: planeMove 13s linear infinite;
+}
+
+@keyframes planeMove {
+    0%, 49.5% {
+        transform: translate(-50%, -50%) scaleX(-1);
+    }
+    50.5%, 100% {
+        transform: translate(-50%, -50%) scaleX(1);
+    }
+    0% { 
+        left: 100%;
+        top: 20%;
+    }
+    25% { 
+        left: 50%;
+        top: 22%;
+    }
+    50% { 
+        left: 0;
+        top: 20%;
+    }
+    75% { 
+        left: 50%;
+        top: 22%;
+    }
+    100% { 
+        left: 100%;
+        top: 20%;
+    }
+}
