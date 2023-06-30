@@ -10,3 +10,7 @@ window.addEventListener("scroll", function() {
     }
     lastScrollTop = st <= 0 ? 0 : st; 
 }, false);
+
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  }
