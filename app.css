@@ -92,6 +92,7 @@
     left: 100%;
     transform: translate(-50%, -50%);
     animation: fishMove 40s linear infinite;
+    
 }
 
 @keyframes fishMove {
@@ -132,6 +133,7 @@
     left: 100%;
     transform: translate(-50%, -50%);
     animation: shoalMove 26s linear infinite;
+    z-index: 1;
 }
 
 @keyframes shoalMove {
@@ -167,16 +169,53 @@
     background-color: #4A90E2; /* Sandy ocean floor color for main background */
     color: #002147; /* Dark blue for contrast text color */
     padding: 50px; /* Adjust as needed */
+    z-index: -1;
+}
+
+#companyInfo > * {
+    z-index: 1;
 }
 
 #companyInfo h1 {
     color: #002147; /* Sunset orange color for headings */
+    z-index: 1;
+}
+
+#companyInfo h4 {
+    text-align: center;
 }
 
 #companyInfo p {
-    color: #4A90E2; /* Light blue color for text */
+    color: #002147; /* Light blue color for text */
+    z-index: 1;
+    text-align: center;
 }
 
 .content {
     margin-bottom: 30px; /* Space between sections */
+    z-index: 1;
+}
+
+#scrollingSubmarine {
+    position: fixed;
+    bottom: 35%; /* adjust as needed */
+    left: 50%; /* adjust as needed */
+    height: 50px; /* change this to the actual height of the submarine */
+    width: 100px; /* change this to the actual width of the submarine */
+    z-index: 0;
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
+    background: url('img/gameSub.png') center center / cover no-repeat;
+}
+
+#scrollingSubmarine.right {
+    transform: translateY(-50%) rotate(0deg);
+}
+
+#scrollingSubmarine.down {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+#scrollingSubmarine.up {
+    transform: translateY(-50%) rotate(-90deg);
 }
