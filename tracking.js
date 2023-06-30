@@ -3,6 +3,7 @@ let cashAccount = localStorage.getItem('cashAccount') ? parseFloat(localStorage.
 let myStocks = localStorage.getItem('myStocks') ? JSON.parse(localStorage.getItem('myStocks')) : [];
 let accountValueHistory = localStorage.getItem('accountValueHistory') ? JSON.parse(localStorage.getItem('accountValueHistory')) : [{time: new Date().toLocaleString(), value: cashAccount}];
 let profitLoss = localStorage.getItem('profitLoss') ? JSON.parse(localStorage.getItem('profitLoss')) : [];
+let totalProfitLoss = localStorage.getItem('totalProfitLoss') ? parseFloat(localStorage.getItem('totalProfitLoss')) : 0;
 
 // After signup, replace 'Your_Finnhub_API_Key' with the API key you received
 const finnhubApiKey = 'cifhe21r01qhvakk3ie0cifhe21r01qhvakk3ieg';
@@ -19,7 +20,7 @@ function deposit() {
 
     // Clear the input field and give user feedbackf
     document.getElementById('deposit-amount').value = '';
-    alert('Deposit successful!');
+    // alert('Deposit successful!');
   } else {
     alert('Please enter a valid deposit amount');
   }
@@ -32,33 +33,36 @@ let stockPrice = 0;
 
 // Function to search for a stock
 async function searchStock() {
-  let ticker = document.getElementById('stock-ticker').value;
-
-  if (ticker) {
-    // API endpoint to get real-time quote
-    let apiEndpoint = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${finnhubApiKey}`;
-
-    try {
-      let response = await fetch(apiEndpoint);
-      if (response.ok) {
-        let data = await response.json();
-        if (data.c) {
-          document.getElementById('stock-price').innerText = data.c.toFixed(2);
-          stockPrice = data.c;
-          currentStock = { ticker: ticker, price: data.c };
+    let ticker = document.getElementById('stock-ticker').value;
+  
+    if (ticker) {
+      // API endpoint to get real-time quote
+      let apiEndpoint = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${finnhubApiKey}`;
+  
+      try {
+        let response = await fetch(apiEndpoint);
+        if (response.ok) {
+          let data = await response.json();
+          if (data.c) {
+            document.getElementById('stock-price').innerText = data.c.toFixed(2);
+            stockPrice = data.c;
+            currentStock = { ticker: ticker, price: data.c };
+            // Update the estimated price
+            updateEstimatedPrice();
+          } else {
+            alert('Could not fetch the stock price');
+          }
         } else {
-          alert('Could not fetch the stock price');
+          alert('Failed to retrieve stock data. Please try again.');
         }
-      } else {
-        alert('Failed to retrieve stock data. Please try again.');
+      } catch (error) {
+        alert('Error:', error);
       }
-    } catch (error) {
-      alert('Error:', error);
+    } else {
+      alert('Please enter a valid stock ticker');
     }
-  } else {
-    alert('Please enter a valid stock ticker');
   }
-}
+  
 
 document.getElementById('stock-ticker').addEventListener('input', function(e) {
     e.target.value = e.target.value.toUpperCase();
@@ -102,13 +106,13 @@ function sellStock(index) {
 
         let profit = totalPrice - (stock.amount * stock.purchasePrice);
         profitLoss.push({ ticker: stock.ticker, amount: stock.amount, profit: profit });
-
+        totalProfitLoss += profit; // add this line
         myStocks.splice(index, 1); // Remove the stock from myStocks array
 
         localStorage.setItem('cashAccount', cashAccount);
         localStorage.setItem('myStocks', JSON.stringify(myStocks));
         localStorage.setItem('profitLoss', JSON.stringify(profitLoss));
-
+        localStorage.setItem('totalProfitLoss', totalProfitLoss); // add this line
         updateDisplay();
       } else {
         alert('Could not fetch the stock price');
@@ -117,10 +121,28 @@ function sellStock(index) {
     .catch(error => alert('Error:', error)); // If there's an error, alert it
 }
 
-// Function to update display
-function updateDisplay() {
-    document.getElementById('cash-account').innerText = 'Current Balance: $' + cashAccount.toLocaleString('en-US', { minimumFractionDigits: 2 });
+// Add a function to get the total value of all stocks
+async function getTotalStockValue() {
+    let total = 0;
   
+    for (let i = 0; i < myStocks.length; i++) {
+      let stock = myStocks[i];
+      let apiEndpoint = `https://finnhub.io/api/v1/quote?symbol=${stock.ticker}&token=${finnhubApiKey}`;
+  
+      let response = await fetch(apiEndpoint);
+      let data = await response.json();
+      total += data.c * stock.amount;
+    }
+  
+    return total;
+  }
+
+// Function to update display
+async function updateDisplay() {
+    document.getElementById('cash-account').innerText = 'Current Balance: $' + cashAccount.toLocaleString('en-US', { minimumFractionDigits: 2 });
+    let totalStockValue = await getTotalStockValue();
+    let accountValue = cashAccount + totalStockValue;
+    accountValueHistory.push({time: new Date().toLocaleString(), value: accountValue});
     // Update My Stocks section
     let myStocksDiv = document.getElementById('my-stocks');
     myStocksDiv.innerHTML = '';
@@ -146,7 +168,19 @@ function updateDisplay() {
     // Record the current account value
     accountValueHistory.push({time: new Date().toLocaleString(), value: cashAccount});
     localStorage.setItem('accountValueHistory', JSON.stringify(accountValueHistory));
+
+    document.getElementById('profit-loss').innerText = 'Total Profit/Loss: $' + totalProfitLoss.toFixed(2);
   }
+
+  // Add a function to periodically update the account value
+setInterval(async function() {
+    let totalStockValue = await getTotalStockValue();
+    let accountValue = cashAccount + totalStockValue;
+    document.getElementById('account-value-history').innerText = 'Current Account Value: $' + accountValue.toFixed(2);
+
+    accountValueHistory.push({time: new Date().toLocaleString(), value: accountValue});
+    localStorage.setItem('accountValueHistory', JSON.stringify(accountValueHistory));
+  }, 10000); // Update every 10 seconds
   
   // Call updateDisplay on page load
   updateDisplay();

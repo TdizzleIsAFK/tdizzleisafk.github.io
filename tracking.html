@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
     <header>
@@ -272,7 +273,7 @@
             </div>
           </nav>        
     </header>
-    <div class="container my-5">
+    <div class="container-fluid pt-5 mb-5 mx-0" id="trackingBody">
       <h2 class="mb-4">Cash Account</h2>
       <div class="mb-5">
         <p id="cash-account"></p>
@@ -280,26 +281,31 @@
         <button onclick="deposit()">Deposit</button>
       </div>
     
-      <h2 class="mb-4">Stocks</h2>
+      <h2 class="mb-4 ms-3">Stocks</h2>
       <div class="mb-5">
         <input id="stock-ticker" type="text" placeholder="Enter Stock Ticker">
         <button onclick="searchStock()">Search</button>
         <p>Stock price: $<span id="stock-price"></span></p>
         <input id="stock-amount" type="number" min="0" placeholder="Number of Shares">
         <button onclick="buyStock()">Buy Stock</button>
-        <p id="estimated-price">Estimated Price: $0</p>
+        <p id="estimated-price" class="ms-3">Estimated Price: $0</p>
       </div>
     
-      <h2 class="mb-4">My Stocks</h2>
-      <div id="my-stocks"></div>
+      <h2 class="mb-4 ms-3">My Stocks</h2>
+      <div id="my-stocks" class="ms-3"></div>
     
-      <h2 class="mb-4">Profit/Loss</h2>
-      <div id="profit-loss"></div>
+      <h2 class="mb-4 ms-3">Profit/Loss</h2>
+      <div id="profit-loss" class="ms-3"></div>
+      
+      <h2 class="mb-4 ms-3">Total Profit/Loss</h2>
+      <p id="total-profit-loss" class="ms-3"></p>
     
-      <h2 class="mb-4">Account Value History</h2>
-      <div id="account-value-history"></div>
+      <h2 class="mb-4 ms-3">Account Value History</h2>
+      <div id="account-value-history" class="ms-3"></div>
+    
       <button onclick="clearData()">Clear Data</button>
     </div>
+    
     
 
     
