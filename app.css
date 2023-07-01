@@ -4,6 +4,10 @@ html, body {
     position: relative;
 }
 
+* {
+    color: #002147;
+}
+
   
   #mainBackground {
     background: url('img/ocean.png') center center / cover no-repeat;
@@ -266,3 +270,41 @@ p a {
 #trackingBody {
     background-color: #4A90E2;
 }
+
+.custom-button {
+    background-color: #002147;
+    color: #ffffff;
+}
+
+.custom-input::placeholder {
+    color: #002147;
+    opacity: 1;
+}
+
+.custom-input:-ms-input-placeholder {
+    color: #002147;
+}
+
+.custom-input::-ms-input-placeholder {
+    color: #002147;
+}
+
+/* This will apply to all screens larger than 768px */
+@media (min-width: 768px) {
+    .input-group {
+        width: 300px;
+        }
+}
+
+.btn-outline-primary {
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    border-color: #002147;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #ffffff; /* your desired hover color */
+    border-color: #002147; /* your desired hover color */
+    color: #FF7F50;
+
+  }
+  

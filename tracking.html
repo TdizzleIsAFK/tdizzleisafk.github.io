@@ -275,28 +275,30 @@
     </header>
     <div class="container-fluid pt-5 mb-5 mx-0" id="trackingBody">
       <h2 class="mb-4">Cash Account</h2>
-      <div class="mb-5">
-        <p id="cash-account"></p>
-        <input id="deposit-amount" type="number" min="0" placeholder="Deposit Amount">
-        <button onclick="deposit()">Deposit</button>
+      <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input id="deposit-amount" type="text" class="form-control custom-input" placeholder="Deposit Amount" aria-label="Username" aria-describedby="basic-addon1">
+        <button class="btn btn-outline-primary custom-button" type="button" onclick="deposit()">Deposit</button>
       </div>
-    
+      
       <h2 class="mb-4 ms-3">Stocks</h2>
-      <div class="mb-5">
-        <input id="stock-ticker" type="text" placeholder="Enter Stock Ticker">
-        <button onclick="searchStock()">Search</button>
-        <p>Stock price: $<span id="stock-price"></span></p>
-        <input id="stock-amount" type="number" min="0" placeholder="Number of Shares">
-        <button onclick="buyStock()">Buy Stock</button>
-        <p id="estimated-price" class="ms-3">Estimated Price: $0</p>
+      <div class="input-group mb-3">
+        <input id="stock-ticker" type="text" class="form-control custom-input" placeholder="Enter Stock Ticker" aria-label="Username" aria-describedby="basic-addon1">
+        <button class="btn btn-outline-primary custom-button" type="button" onclick="searchStock()">Search</button>
       </div>
+      <p class="ms-3 fw-medium">Stock price: $<span id="stock-price"></span></p>
+      <div class="input-group mb-3">
+        <input id="stock-amount" type="text" class="form-control custom-input" placeholder="Number of Shares" aria-label="Username" aria-describedby="basic-addon1">
+        <button class="btn btn-outline-primary custom-button" type="button" onclick="buyStock()">Purchase</button>
+      </div>
+      <p id="estimated-price" class="ms-3 fw-medium">Estimated Price: $0</p>
     
       <h2 class="mb-4 ms-3">My Stocks</h2>
       <div id="my-stocks" class="ms-3"></div>
     
       <h2 class="mb-4 ms-3">Profit/Loss</h2>
       <div id="profit-loss" class="ms-3"></div>
-      
+    
       <h2 class="mb-4 ms-3">Total Profit/Loss</h2>
       <p id="total-profit-loss" class="ms-3"></p>
     
@@ -305,6 +307,7 @@
     
       <button onclick="clearData()">Clear Data</button>
     </div>
+    
     
     
 
