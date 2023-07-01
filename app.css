@@ -297,7 +297,7 @@ p a {
 }
 
 .btn-outline-primary {
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out color 0.15s ease-in-out;
     border-color: #002147;
   }
   
@@ -308,3 +308,31 @@ p a {
 
   }
   
+  .loginButton {
+    background-color: #ffffff;
+    color: #002147;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  }
+  
+  .loginButton:hover {
+    background-color: #ffffff; /* your desired hover color */
+    border-color: #002147; /* your desired hover color */
+    color: #FF7F50;
+
+  }
+
+  .btn-outline-primary:focus,
+.btn-outline-primary:active {
+    box-shadow: 0 0 0 0.2rem rgba(0, 33, 71, 0.5);  /* The color in rgba format */
+    outline: none; /* Remove default browser outline */
+    background-color: #ffffff;
+    color: #002147;
+}
+
+.loginButton:focus,
+.loginButton:active {
+    box-shadow: 0 0 0 0.2rem rgba(0, 33, 71, 0.5);  /* The color in rgba format */
+    outline: none; /* Remove default browser outline */
+    background-color: #002147;
+    color: #ffffff;
+}
